@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, forwardRef } from 'react'
+import React, { useEffect, useRef, forwardRef, useCallback } from 'react'
 import { Chart as ChartJS } from 'chart.js'
 import type { ChartType, DefaultDataPoint } from 'chart.js'
 
@@ -31,14 +31,14 @@ function ChartComponent<
     fallbackContent,
     updateMode,
     ...canvasProps
-  } = props as ChartProps
+  } = props
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const chartRef = useRef<ChartJS | null>()
+  const chartRef = useRef<ChartJS<TType, TData, TLabel> | null>(null)
 
-  const renderChart = () => {
+  const renderChart = useCallback(() => {
     if (!canvasRef.current) return
 
-    chartRef.current = new ChartJS(canvasRef.current, {
+    chartRef.current = new ChartJS<TType, TData, TLabel>(canvasRef.current, {
       type,
       data: cloneData(data, datasetIdKey),
       options: options && { ...options },
@@ -46,16 +46,16 @@ function ChartComponent<
     })
 
     reforwardRef(ref, chartRef.current)
-  }
+  }, [data, datasetIdKey, options, plugins, ref, type])
 
-  const destroyChart = () => {
+  const destroyChart = useCallback(() => {
     reforwardRef(ref, null)
 
     if (chartRef.current) {
       chartRef.current.destroy()
       chartRef.current = null
     }
-  }
+  }, [ref])
 
   useEffect(() => {
     if (!redraw && chartRef.current && options) {
@@ -73,7 +73,7 @@ function ChartComponent<
     if (!redraw && chartRef.current && data.datasets) {
       setDatasets(chartRef.current.config.data, data.datasets, datasetIdKey)
     }
-  }, [redraw, data.datasets])
+  }, [redraw, data.datasets, datasetIdKey])
 
   useEffect(() => {
     if (!chartRef.current) return
@@ -84,20 +84,28 @@ function ChartComponent<
     } else {
       chartRef.current.update(updateMode)
     }
-  }, [redraw, options, data.labels, data.datasets, updateMode])
+  }, [
+    redraw,
+    options,
+    data.labels,
+    data.datasets,
+    updateMode,
+    destroyChart,
+    renderChart,
+  ])
 
   useEffect(() => {
     if (!chartRef.current) return
 
     destroyChart()
     setTimeout(renderChart)
-  }, [type])
+  }, [destroyChart, renderChart, type])
 
   useEffect(() => {
     renderChart()
 
     return () => destroyChart()
-  }, [])
+  }, [destroyChart, renderChart])
 
   return (
     <canvas

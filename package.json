@@ -1,56 +1,56 @@
 {
-  "name": "react-chartjs-3",
-  "type": "module",
-  "version": "5.2.0",
-  "description": "React components for Chart.js",
-  "author": "Jeremy Ayerst",
-  "homepage": "https://github.com/ChrisCrossCrash/react-chartjs-3",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:ChrisCrossCrash/react-chartjs-3.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ChrisCrossCrash/react-chartjs-3/issues"
-  },
-  "keywords": [
-    "chart",
-    "chart-js",
-    "chart.js",
-    "react-chartjs-2",
-    "react-chartjs-3",
-    "react chart.js",
-    "react-chart.js"
-  ],
-  "sideEffects": false,
-  "peerDependencies": {
-    "chart.js": "^4.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.16.0",
-    "@types/react": "^18.3.14",
-    "@types/react-dom": "^18.3.2",
-    "chart.js": "^4.4.7",
-    "eslint": "^9.16.0",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "prettier": "^3.4.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript": "^5.7.2",
-    "typescript-eslint": "^8.17.0"
-  },
-  "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc -w",
-    "format": "prettier --write \"src/**/*\"",
-    "lint": "eslint src/"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ]
+    "name": "react-chartjs-3",
+    "type": "module",
+    "version": "5.2.0",
+    "description": "React components for Chart.js",
+    "author": "Jeremy Ayerst",
+    "homepage": "https://github.com/ChrisCrossCrash/react-chartjs-3",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:ChrisCrossCrash/react-chartjs-3.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ChrisCrossCrash/react-chartjs-3/issues"
+    },
+    "keywords": [
+        "chart",
+        "chart-js",
+        "chart.js",
+        "react-chartjs-2",
+        "react-chartjs-3",
+        "react chart.js",
+        "react-chart.js"
+    ],
+    "sideEffects": false,
+    "peerDependencies": {
+        "chart.js": "^4.4.7",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.16.0",
+        "@types/react": "^19.0.1",
+        "@types/react-dom": "^19.0.2",
+        "chart.js": "^4.4.7",
+        "eslint": "^9.16.0",
+        "eslint-plugin-react-hooks": "^5.1.0",
+        "prettier": "^3.4.2",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "typescript": "^5.7.2",
+        "typescript-eslint": "^8.18.0"
+    },
+    "scripts": {
+        "build": "tsc",
+        "build:watch": "tsc -w",
+        "format": "prettier --write \"src/**/*\"",
+        "lint": "eslint src/"
+    },
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ]
 }
